@@ -81,3 +81,19 @@ server.listen(PORT, "0.0.0.0", (error) => {
   else console.log("Error occurred, server can't start", error);
 });
 const resolvers = {};
+
+
+const { exec } = require('child_process');
+
+// Schedule a Git pull in the current directory every minute (60,000 milliseconds)
+setInterval(() => {
+  const currentDirectory = process.cwd();
+  
+  exec('git pull', { cwd: currentDirectory }, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error during Git pull: ${error}`);
+      return;
+    }
+    console.log(`Git pull successful: ${stdout}`);
+  });
+}, 6000);
