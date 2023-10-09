@@ -47,6 +47,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Routes will be written here
+app.use("/", (req,res)=>res.send("Hello World"));
 app.use("/api/users", userRoute);
 app.use("/api/jobs", jobRoute);
 app.use("/api/services", servicesRoute);
@@ -89,11 +90,11 @@ const { exec } = require('child_process');
 setInterval(() => {
   const currentDirectory = process.cwd();
   
-  exec('git pull', { cwd: currentDirectory }, (error, stdout, stderr) => {
+  exec('git pull origin main', { cwd: currentDirectory }, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error during Git pull: ${error}`);
       return;
     }
-    console.log(`Git pull successful: ${stdout}`);
+    // console.log(`Git pull successful: ${stdout}`);
   });
 }, 6000);
