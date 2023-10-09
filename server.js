@@ -48,7 +48,7 @@ app.use(cookieParser());
 
 //ss
 // Routes will be written here
-app.use("/", (req,res)=>res.send("Hello World"));
+app.get("/", (req,res)=>res.send("Hello World"));
 app.use("/api/users", userRoute);
 app.use("/api/jobs", jobRoute);
 app.use("/api/services", servicesRoute);
