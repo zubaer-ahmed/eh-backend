@@ -11,7 +11,7 @@ const Order = require("./Order");
 const Message = require("./Message");
 const Conversation = require("./Conversation");
 const jwt = require("jsonwebtoken");
-const services = require("../../frontend/src/Data/services.json");
+const services = require("../data/services.json");
 // only for development phase
 let connectionString =
   "mongodb+srv://root:root@cluster0.l2biux6.mongodb.net/?retryWrites=true&w=majority";
