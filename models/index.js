@@ -118,13 +118,13 @@ async function addTemplates() {
 
   let usr = await User.findOne({ email: "admin@gmail.com" });
   let usr2 = await User.findOne({ email: "admin@gmail.com" });
-  // let initServices = services;
-  // await Service.create(
-  //   initServices.default.map((item) => ({
-  //     ...item,
-  //     uploader: usr,
-  //   }))
-  // );
+  let initServices = services;
+  await Service.create(
+    services.map((item) => ({
+      ...item,
+      uploader: usr,
+    }))
+  );
 
   let newConv = await Conversation.create({
     code: usr._id + "-" + usr2._id,

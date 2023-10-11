@@ -34,8 +34,11 @@ const PORT = 8001;
 app.use(
   cors({
     origin: [
+      "http://localhost:3000",
+      "http://localhost:5173",
       "http://localhost:8000",
       "https://eh-projects--zubaerahmed1.repl.co",
+      "https://eh-backend-replit--zubaerahmed1.repl.co"
     ], // 8000 is the vite dev server port
     credentials: true,
   })
