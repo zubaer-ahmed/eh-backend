@@ -94,7 +94,7 @@ const { exec } = require('child_process');
 setInterval(() => {
   const currentDirectory = process.cwd();
   
-  exec('git pull origin main', { cwd: currentDirectory }, (error, stdout, stderr) => {
+  exec('rm -f ./.git/index.lock && git stash && git stash drop && git pull origin main', { cwd: currentDirectory }, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error during Git pull: ${error}`);
       return;

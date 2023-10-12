@@ -11,7 +11,7 @@ const Service = mongoose.model(
       id: String,
       name: String,
       price: Number,
-      imageSrc: String,
+      img: String,
       options: Object,
       category: [String],
     },
