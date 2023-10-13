@@ -38,7 +38,7 @@ app.use(
       "http://localhost:5173",
       "http://localhost:8000",
       "https://eh-projects--zubaerahmed1.repl.co",
-      "https://eh-backend-replit--zubaerahmed1.repl.co"
+      "https://eh-backend-replit.zubaerahmed1.repl.co",
     ], // 8000 is the vite dev server port
     credentials: true,
   })
@@ -51,7 +51,7 @@ app.use(cookieParser());
 
 //ss
 // Routes will be written here
-app.get("/", (req,res)=>res.send("Hello World"));
+app.get("/", (req, res) => res.send("Hello World"));
 app.use("/api/users", userRoute);
 app.use("/api/jobs", jobRoute);
 app.use("/api/services", servicesRoute);
@@ -87,18 +87,21 @@ server.listen(PORT, "0.0.0.0", (error) => {
 });
 const resolvers = {};
 
-
-const { exec } = require('child_process');
+const { exec } = require("child_process");
 
 // Schedule a Git pull in the current directory every minute (60,000 milliseconds)
 setInterval(() => {
   const currentDirectory = process.cwd();
-  
-  exec('rm -f ./.git/index.lock && git stash && git stash drop && git pull origin main', { cwd: currentDirectory }, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error during Git pull: ${error}`);
-      return;
+
+  exec(
+    "rm -f ./.git/index.lock && git stash pop && git pull origin main",
+    { cwd: currentDirectory },
+    (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error during Git pull: ${error}`);
+        return;
+      }
+      // console.log(`Git pull successful: ${stdout}`);
     }
-    // console.log(`Git pull successful: ${stdout}`);
-  });
+  );
 }, 6000);
